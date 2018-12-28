@@ -10,9 +10,9 @@ body {
     background: #00000080;
 }
 
-.slider .left.image {
+/* .slider .left.image {
     border: 0;
-}
+} */
 
 .image {
     height: 100%;
@@ -23,3 +23,17 @@ body {
 .image img {
     transition-duration: 0.15s;
 } 
+
+.combobox {
+    position: absolute;
+    top: 3px;
+    z-index: 2;
+}
+
+#left-combobox {
+    left: 3px;
+}
+
+#right-combobox {
+    right: 3px;
+}

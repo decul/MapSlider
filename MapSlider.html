@@ -7,17 +7,20 @@
 </head>
 
 <body>
-    <div class="slider">
-        <div class="slider responsive">
-            <div class="left image">
-                <img src="src/img/1944 map 10k.jpg" />
-            </div>
-            <div class="right image">
-                <img src="src/img/2012 map 3k.png" />
+    <div style="position: relative">
+        <div class="slider">
+            <div class="slider responsive">
+                <div class="left image">
+                    <img src="src/img/1944 map 10k.jpg" />
+                </div>
+                <div class="right image">
+                    <img src="src/img/2012 map 3k.png" />
+                </div>
             </div>
         </div>
+        <select id="left-combobox" class="combobox"></select>
+        <select id="right-combobox" class="combobox"></select>
     </div>
-
     <script type="text/javascript">
         $('.slider').slider({ instructionText:"Użyj myszki by przesunąć granicę pomiędzy nową i starą mapą" });
         initMapSlider();
