@@ -1,0 +1,25 @@
+body {
+	margin: 0;
+}
+
+.slider .instruction {
+    width: 50%;
+}
+
+.slider .left {
+    background: #00000080;
+}
+
+.slider .left.image {
+    border: 0;
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image img {
+    transition-duration: 0.15s;
+} 
