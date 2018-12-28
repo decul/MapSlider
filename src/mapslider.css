@@ -3,7 +3,14 @@ body {
 }
 
 .slider .instruction {
+    left: 25%;
     width: 50%;
+    background: white;
+    padding: 6px;
+}
+
+.slider .instruction p {
+    padding: 0;
 }
 
 .slider .left {

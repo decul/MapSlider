@@ -26,7 +26,7 @@
 				.text(settings.instructionText);
 
 			//set left offset of instruction
-			$instrDiv.css('left', (settings.initialPosition - $instrDiv.children('p').width() / (2 * width)) * 100 + '%');
+			//$instrDiv.css('left', (settings.initialPosition - $instrDiv.children('p').width() / (2 * width)) * 100 + '%');
 		}
 	};
 
