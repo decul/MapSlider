@@ -1,16 +1,16 @@
 var configs = [];
-configs.push({ name:"1888 mapa 2k", fileName:"1888 map 2k.png", w:2462, h:1758, x:1467, y:926, z:0.9238, r:0 });
-configs.push({ name:"1944 mapa 10k", fileName:"1944 map 10k.jpg", w:10187, h:9666, x:5738, y:4514, z:0.2, r:0 });
-configs.push({ name:"2012 mapa Śródmieście", fileName:"2012 map center.png", w:3072, h:2560, x:1552, y:1309, z:0.826, r:2.42 });
-configs.push({ name:"2012 mapa szeroka", fileName:"2012 map wide.png", w:3584, h:3584, x:1952.36, y:1674.21, z:8.2484, r:2.42 })
-configs.push({ name:"1944 foto Śródmieście", fileName:"1944_7 foto center.png", w:3480, h:3532, x:1989, y:1462, z:0.5226, r:-59.2 })
-configs.push({ name:"1944 foto 1000-lecia", fileName:"1944_6.png", w:3461, h:3515, x:1445.8, y:2857.39, z:0.53049, r:-59.2 })
-configs.push({ name:"1944 foto Załęże", fileName:"1944_4.png", w:3532, h:3470, x:-187.24, y:4881.7, z:0.53049, r:-60 })
-configs.push({ name:"1944 foto Zalesie", fileName:"1944_8.png", w:3467, h:3470, x:270.17, y:-1042.51, z:0.59981 , r:-58.1 })
+configs.push({ name:"1888", fileName:"1888.jpg", w:2462, h:1758, x:1467, y:926, z:0.9238, r:0 });
+configs.push({ name:"1944", fileName:"1944.jpg", w:4662, h:4345, x:2658.58, y:2040.92, z:0.4, r:0 });
+configs.push({ name:"2012 Śródmieście", fileName:"2012 center.png", w:3072, h:2560, x:1552, y:1309, z:0.826, r:2.42 });
+configs.push({ name:"2012 Przedmieścia", fileName:"2012 wide.jpg", w:3584, h:3584, x:1952.36, y:1674.21, z:8.2484, r:2.42 })
+configs.push({ name:"Foto 1944 Śródmieście", fileName:"1944_7.jpg", w:3468, h:3464, x:1999.78, y:1431.03, z:0.5226, r:-59.2 })
+configs.push({ name:"Foto 1944 1000-lecia", fileName:"1944_6.jpg", w:3461, h:3462, x:1468.56, y:2844.45, z:0.53049, r:-59.2 })
+configs.push({ name:"Foto 1944 Załęże", fileName:"1944_4.jpg", w:3472, h:3470, x:-219.24, y:4885.16, z:0.53049, r:-60 })
+configs.push({ name:"Foto 1944 Zalesie", fileName:"1944_8.jpg", w:3467, h:3470, x:270.17, y:-1042.51, z:0.59981 , r:-58.1 })
 
 
-var leftMapIndex = 7;
-var rightMapIndex = 3;
+var leftMapIndex = 1;
+var rightMapIndex = 2;
 
 
 const zoomDelta = 1.42;
@@ -19,6 +19,8 @@ const translationDelta = 100;
 var zoomRatio = 1.0;
 var translationX = 0.0;
 var translationY = 0.0;
+
+var debug = false;
 
 
 
@@ -34,7 +36,11 @@ var scrollZoom = function(e) {
 }
 
 var keyboard = function(e) {
+    if (e.key.match("^F"))
+        return;
+    
     e.preventDefault();
+    
     switch(e.key) {
         case 'ArrowUp':
             translationY += translationDelta / zoomRatio;
@@ -59,47 +65,52 @@ var keyboard = function(e) {
         case '-':
             zoomRatio /= zoomDelta;
             break;
-
-        case 'q':
-            configs[leftMapIndex].r -= 0.1;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case 'e':
-            configs[leftMapIndex].r += 0.1;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case 'w': 
-            configs[leftMapIndex].y += 3 / zoomRatio / configs[leftMapIndex].z;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case 's': 
-            configs[leftMapIndex].y -= 3 / zoomRatio / configs[leftMapIndex].z;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case 'a': 
-            configs[leftMapIndex].x += 3 / zoomRatio / configs[leftMapIndex].z;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case 'd': 
-            configs[leftMapIndex].x -= 3 / zoomRatio / configs[leftMapIndex].z;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case '1': 
-            configs[leftMapIndex].z /= 1.003;
-            console.log(configs[leftMapIndex]);
-            break;
-
-        case '2': 
-            configs[leftMapIndex].z *= 1.003;
-            console.log(configs[leftMapIndex]);
-            break;
     }
+
+    if (debug) {
+        switch(e.key) {
+            case 'q':
+                configs[leftMapIndex].r -= 0.1;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case 'e':
+                configs[leftMapIndex].r += 0.1;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case 'w': 
+                configs[leftMapIndex].y += 3 / zoomRatio / configs[leftMapIndex].z;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case 's': 
+                configs[leftMapIndex].y -= 3 / zoomRatio / configs[leftMapIndex].z;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case 'a': 
+                configs[leftMapIndex].x += 3 / zoomRatio / configs[leftMapIndex].z;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case 'd': 
+                configs[leftMapIndex].x -= 3 / zoomRatio / configs[leftMapIndex].z;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case '1': 
+                configs[leftMapIndex].z /= 1.003;
+                console.log(configs[leftMapIndex]);
+                break;
+
+            case '2': 
+                configs[leftMapIndex].z *= 1.003;
+                console.log(configs[leftMapIndex]);
+                break;
+        }
+    }
+
     transform();
 }
 
