@@ -35,10 +35,10 @@ var scrollZoom = function(e) {
     transform();
 }
 
-var keyboard = function(e) {
+var keyPressed = function(e) {
     if (e.key.match("^F"))
         return;
-    
+
     e.preventDefault();
     
     switch(e.key) {
@@ -156,12 +156,24 @@ var comboboxChanged = function() {
     transform();
 }
 
+var simulateKey = function(e) {
+    e.key = e.data;
+    keyPressed(e);
+}
+
 var initMapSlider = function() {
     $('.combobox').change(comboboxChanged);
     fillComboboxes();
 
     $('.slider').on('mousewheel', scrollZoom);
-    $(document).keydown(keyboard);
+    $(document).keydown(keyPressed);
+
+    $('#zoom-out').bind("touchstart", "-", simulateKey);
+    $('#zoom-in').bind("touchstart", "+", simulateKey);
+    $('#move-up').bind("touchstart", "ArrowUp", simulateKey);
+    $('#move-down').bind("touchstart", "ArrowDown", simulateKey);
+    $('#move-left').bind("touchstart", "ArrowLeft", simulateKey);
+    $('#move-right').bind("touchstart", "ArrowRight", simulateKey);
 
     transform();
 }
