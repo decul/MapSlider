@@ -25,6 +25,7 @@ var debug = false;
 
 var scrollZoom = function (e) {
     e.preventDefault();
+    $('.image img').addClass('with-transition');
     if (e.originalEvent.wheelDelta / 120 > 0) {
         zoomRatio *= zoomDelta;
     }
