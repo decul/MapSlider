@@ -2,17 +2,6 @@ body {
 	margin: 0;
 }
 
-.slider .instruction {
-    left: 25%;
-    width: 50%;
-    background: white;
-    padding: 6px;
-}
-
-.slider .instruction p {
-    padding: 0;
-}
-
 .slider .left {
     background: #00000080;
 }
@@ -27,7 +16,7 @@ body {
     overflow: hidden;
 }
 
-.image img {
+.image img.with-transition {
     transition-duration: 0.15s;
 } 
 

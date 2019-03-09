@@ -8,8 +8,8 @@
 
 <body>
     <div style="position: relative">
-        <div class="slider">
-            <div class="slider responsive">
+        <div class="slider responsive">
+            <div id="image-container">
                 <div class="left image">
                     <img/>
                 </div>
@@ -30,7 +30,9 @@
         </div>
     </div>
     <script type="text/javascript">
-        $('.slider').slider({ instructionText:"Użyj strzałek na klawiaturze oraz +/- do poruszania się po mapie, a myszki do przesuwania granicy pomiędzy mapami" });
+        $('.slider').slider({
+            instructionText: "Użyj myszki do przesuwania granicy pomiędzy mapami"
+        });
         initMapSlider();
     </script>
 </body>
