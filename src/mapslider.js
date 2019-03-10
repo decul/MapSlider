@@ -1,11 +1,11 @@
 var configs = [];
-configs.push({ name:"1888", fileName:"1888.jpg", w:2462, h:1758, x:1467, y:926, z:0.9238, r:0 });
-configs.push({ name:"1944", fileName:"1944.jpg", w:4662, h:4345, x:2658.58, y:2040.92, z:0.4, r:0 });
-configs.push({ name:"2012 Śródmieście", fileName:"2012 center.png", w:3072, h:2560, x:1552, y:1309, z:0.826, r:2.42 });
-configs.push({ name:"2012 Przedmieścia", fileName:"2012 wide.jpg", w:3584, h:3584, x:1952.36, y:1674.21, z:8.2484, r:2.42 })
-configs.push({ name:"Foto 1944 Śródmieście", fileName:"1944_7.jpg", w:3468, h:3464, x:2005.42, y:1433.85, z:0.5226, r:-59.2 })
-configs.push({ name:"Foto 1944 1000-lecia", fileName:"1944_6.jpg", w:3461, h:3462, x:1468.56, y:2844.45, z:0.53049, r:-59.2 })
-configs.push({ name:"Foto 1944 Załęże", fileName:"1944_4.jpg", w:3472, h:3470, x:-219.24, y:4885.16, z:0.53049, r:-60 })
+configs.push({ name: "1888", fileName: "1888.jpg", w: 2462, h: 1758, x: 1467, y: 926, z: 0.9238, r: 0 });
+configs.push({ name: "1944", fileName: "1944.jpg", w: 4662, h: 4345, x: 2658.58, y: 2040.92, z: 0.4, r: 0 });
+configs.push({ name: "2012 Śródmieście", fileName: "2012 center.png", w: 3072, h: 2560, x: 1552, y: 1309, z: 0.826, r: 2.42 });
+configs.push({ name: "2012 Przedmieścia", fileName: "2012 wide.jpg", w: 3584, h: 3584, x: 1952.36, y: 1674.21, z: 8.2484, r: 2.42 })
+configs.push({ name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg", w: 3468, h: 3464, x: 2005.42, y: 1433.85, z: 0.5226, r: -59.2 })
+configs.push({ name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg", w: 3461, h: 3462, x: 1468.56, y: 2844.45, z: 0.53049, r: -59.2 })
+configs.push({ name: "Foto 1944 Załęże", fileName: "1944_4.jpg", w: 3472, h: 3470, x: -219.24, y: 4885.16, z: 0.53049, r: -60 })
 
 
 var leftMapIndex = 1;
@@ -22,52 +22,58 @@ var translationY = 0.0;
 var debug = false;
 
 
-
-var scrollZoom = function(e) {
+var scrollZoom = function (e) {
     e.preventDefault();
-    if(e.originalEvent.wheelDelta /120 > 0) {
+    $('.image img').addClass('with-transition');
+    if (e.originalEvent.wheelDelta / 120 > 0) {
         zoomRatio *= zoomDelta;
     }
-    else{
+    else {
         zoomRatio /= zoomDelta;
     }
     transform();
 }
 
-var keyPressed = function(e) {
+var keyPressed = function (e) {
     if (e.key.match("^F"))
         return;
 
     e.preventDefault();
-    
-    switch(e.key) {
+
+    switch (e.key) {
         case 'ArrowUp':
+            $('.image img').addClass('with-transition');
             translationY += translationDelta / zoomRatio;
             break;
 
         case 'ArrowDown':
+            $('.image img').addClass('with-transition');
             translationY -= translationDelta / zoomRatio;
             break;
 
         case 'ArrowRight':
+            $('.image img').addClass('with-transition');
             translationX -= translationDelta / zoomRatio;
             break;
 
         case 'ArrowLeft':
+            $('.image img').addClass('with-transition');
             translationX += translationDelta / zoomRatio;
             break;
 
         case '+':
+            $('.image img').addClass('with-transition');
             zoomRatio *= zoomDelta;
             break;
 
         case '-':
+            $('.image img').addClass('with-transition');
             zoomRatio /= zoomDelta;
             break;
     }
 
     if (debug) {
-        switch(e.key) {
+        switch (e.key) {
             case 'q':
                 configs[leftMapIndex].r -= 0.1;
                 console.log(configs[leftMapIndex]);
@@ -78,32 +84,32 @@ var keyPressed = function(e) {
                 console.log(configs[leftMapIndex]);
                 break;
 
-            case 'w': 
+            case 'w':
                 configs[leftMapIndex].y += 3 / zoomRatio / configs[leftMapIndex].z;
                 console.log(configs[leftMapIndex]);
                 break;
 
-            case 's': 
+            case 's':
                 configs[leftMapIndex].y -= 3 / zoomRatio / configs[leftMapIndex].z;
                 console.log(configs[leftMapIndex]);
                 break;
 
-            case 'a': 
+            case 'a':
                 configs[leftMapIndex].x += 3 / zoomRatio / configs[leftMapIndex].z;
                 console.log(configs[leftMapIndex]);
                 break;
 
-            case 'd': 
+            case 'd':
                 configs[leftMapIndex].x -= 3 / zoomRatio / configs[leftMapIndex].z;
                 console.log(configs[leftMapIndex]);
                 break;
 
-            case '1': 
+            case '1':
                 configs[leftMapIndex].z /= 1.003;
                 console.log(configs[leftMapIndex]);
                 break;
 
-            case '2': 
+            case '2':
                 configs[leftMapIndex].z *= 1.003;
                 console.log(configs[leftMapIndex]);
                 break;
@@ -113,12 +119,12 @@ var keyPressed = function(e) {
     transform();
 }
 
-var transform = function() {
+var transform = function () {
     transformSide('left', configs[leftMapIndex]);
     transformSide('right', configs[rightMapIndex]);
 }
 
-var transformSide = function(side, conf) {
+var transformSide = function (side, conf) {
     var screenWidth = $(window).width();
     var screenHeight = $(window).height();
 
@@ -135,9 +141,9 @@ var transformSide = function(side, conf) {
     $('.' + side + '.image img').css('transform', ' translate3d(' + transX + 'px, ' + transY + 'px, 0px) scale(' + zoom + ') rotate(' + conf.r + 'deg)');
 }
 
-var fillComboboxes = function() {
+var fillComboboxes = function () {
     var $comboboxes = $('.combobox');
-    $.each(configs, function(index, conf) {
+    $.each(configs, function (index, conf) {
         $comboboxes.append($("<option />").val(index).text(conf.name));
     });
     $('#left-combobox').val(leftMapIndex);
@@ -145,7 +151,7 @@ var fillComboboxes = function() {
     comboboxChanged();
 }
 
-var comboboxChanged = function() {
+var comboboxChanged = function () {
     leftMapIndex = $('#left-combobox').val();
     rightMapIndex = $('#right-combobox').val();
 
@@ -155,17 +161,47 @@ var comboboxChanged = function() {
     transform();
 }
 
-var simulateKey = function(e) {
+var simulateKey = function (e) {
     e.key = e.data;
     keyPressed(e);
 }
 
-var initMapSlider = function() {
+var startDragX, startDragY;
+
+var startDragging = function (e) {
+    e.preventDefault();
+    $('.image img').removeClass('with-transition');
+    startDragX = e.pageX;
+    startDragY = e.pageY;
+    $(document)
+        .on('mousemove touchmove', dragging)
+        .on('mouseup touchend', stopDragging);
+}
+
+var dragging = function (e) {
+    e.preventDefault();
+    translationX += (e.pageX - startDragX) / zoomRatio;
+    translationY += (e.pageY - startDragY) / zoomRatio;
+    startDragX = e.pageX;
+    startDragY = e.pageY;
+
+    transform();
+}
+
+var stopDragging = function (e) {
+    e.preventDefault();
+    $(document)
+        .off('mousemove touchmove', dragging)
+        .off('mouseup touchend', stopDragging);
+};
+
+var initMapSlider = function () {
     $('.combobox').change(comboboxChanged);
     fillComboboxes();
 
     $('.slider').on('mousewheel', scrollZoom);
     $(document).keydown(keyPressed);
+    $('#image-container').on('mousedown touchstart', startDragging);
 
     $('#zoom-out').bind("touchstart", "-", simulateKey);
     $('#zoom-in').bind("touchstart", "+", simulateKey);
