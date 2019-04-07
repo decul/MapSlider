@@ -21,8 +21,8 @@ body {
 } 
 
 .openmap {
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
 	position: absolute;
 	z-index: 0;
 	top: 0px;
@@ -30,8 +30,8 @@ body {
 }
 
 .openmap iframe {
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
 }
 
 .combobox {
