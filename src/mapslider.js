@@ -198,7 +198,10 @@ var stopDragging = function (e) {
 };
 
 var initMapSlider = function () {
-    map = L.map('openmap-wrapper');
+    map = L.map('openmap-wrapper', {
+        zoomControl: false,
+        scrollWheelZoom: 'center'
+    }).setView([49.8264, 22.7690], 16);
     initMap();
 
     $('.combobox').change(comboboxChanged);
@@ -242,8 +245,4 @@ function initMap() {
     // add OpenStreetMaps
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets' }).addTo(map);
 
-}
-
-function init() {
-    initMap();
 }
