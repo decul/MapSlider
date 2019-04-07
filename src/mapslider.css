@@ -20,6 +20,20 @@ body {
     transition-duration: 0.15s;
 } 
 
+.openmap {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+	position: absolute;
+	z-index: 0;
+	top: 0px;
+	left: 0px;
+}
+
+.openmap iframe {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}
+
 .combobox {
     position: absolute;
     top: 3px;
