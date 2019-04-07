@@ -29,15 +29,19 @@ body {
 	left: 0px;
 }
 
-.openmap iframe {
-    width: 100%;
-    height: 100%;
-}
-
 .combobox {
     position: absolute;
     top: 3px;
     z-index: 2;
+}
+
+#custom-maps {
+    pointer-events: none;
+}
+
+#openmap-wrapper {
+    height: 100%;
+    width: 100%;
 }
 
 #left-combobox {

@@ -4,22 +4,25 @@
     <script type="text/javascript" src="src/mapslider.js"></script>
     <link rel="stylesheet" type="text/css" href="src/imgslider.css">
     <link rel="stylesheet" type="text/css" href="src/mapslider.css">
+    <link rel="stylesheet" type="text/css" href="src/leaflet.css">
+    <script type="text/javascript" src="src/leaflet.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 </head>
 
 <body>
     <div style="position: relative">
         <div class="slider responsive">
             <div id="image-container">
-                <div class="left image">
-                    <img/>
-                </div>
-                <div class="right image">
-                    <img/>
+                <div id="custom-maps">
+                    <div class="left image">
+                        <img/>
+                    </div>
+                    <div class="right image">
+                        <img/>
+                    </div>
                 </div>
                 <div class="openmap">
-                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=21.93197250366211%2C50.00784933855352%2C22.07530975341797%2C50.060940891421765&amp;layer=mapnik" >
-                    </iframe>
+                    <div id="openmap-wrapper"></div>
                 </div>
             </div>
         </div>

@@ -21,6 +21,8 @@ var translationY = 0.0;
 
 var debug = false;
 
+var map;
+
 
 var scrollZoom = function (e) {
     e.preventDefault();
@@ -196,12 +198,15 @@ var stopDragging = function (e) {
 };
 
 var initMapSlider = function () {
+    map = L.map('openmap-wrapper');
+    initMap();
+
     $('.combobox').change(comboboxChanged);
     fillComboboxes();
 
-    $('.slider').on('mousewheel', scrollZoom);
+    $('.openmap').on('mousewheel', scrollZoom);
     $(document).keydown(keyPressed);
-    $('#image-container').on('mousedown touchstart', startDragging);
+    $('#openmap-wrapper').on('mousedown touchstart', startDragging);
 
     $('#zoom-out').bind("touchstart", "-", simulateKey);
     $('#zoom-in').bind("touchstart", "+", simulateKey);
@@ -211,4 +216,34 @@ var initMapSlider = function () {
     $('#move-right').bind("touchstart", "ArrowRight", simulateKey);
 
     transform();
+}
+
+function initMap() {
+    const boundaries = {
+        max: {
+            lat: 45.75862,
+            lng: 11.86522
+        },
+        min: {
+            lat: 45.09217,
+            lng: 10.32535
+        }
+    }
+
+    // fit map between brescia and padua
+    map.fitBounds(
+        L.latLngBounds(
+            L.latLng(boundaries.min),
+            L.latLng(boundaries.max)
+        )
+    );
+
+
+    // add OpenStreetMaps
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', id: 'mapbox.streets' }).addTo(map);
+
+}
+
+function init() {
+    initMap();
 }
