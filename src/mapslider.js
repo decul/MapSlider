@@ -9,13 +9,13 @@ configs.push({ name: "Foto 1944 Załęże", fileName: "1944_4.jpg", w: 3472, h: 
 
 
 var leftMapIndex = 1;
-var rightMapIndex = 2;
+var rightMapIndex = 6;
 
 
-const zoomDelta = 1.42;
+const zoomDelta = 2.0;
 const translationDelta = 100;
 
-var zoomRatio = 1.0;
+var zoomRatio = 4.2;
 var translationX = 0.0;
 var translationY = 0.0;
 
@@ -134,7 +134,7 @@ var transformSide = function (side, conf) {
 
     var transX = (-conf.w + screenWidth) / 2;     // Allign picture's and screen's middle points
     transX += (conf.w / 2.0 - conf.x) * zoom;     // Drag city hall to middle poin
-    transX += translationX * zoomRatio;                // Drag map to place that user wants to watch
+    transX += translationX * zoomRatio;           // Drag map to place that user wants to watch
 
     var transY = (-conf.h + screenHeight) / 2;
     transY += (conf.h / 2.0 - conf.y) * zoom;
@@ -222,22 +222,16 @@ var initMapSlider = function () {
 }
 
 function initMap() {
-    const boundaries = {
-        max: {
-            lat: 45.75862,
-            lng: 11.86522
-        },
-        min: {
-            lat: 45.09217,
-            lng: 10.32535
-        }
+    const coord = {
+        lat: 50.0373,
+        lng: 22.0040
     }
 
     // fit map between brescia and padua
     map.fitBounds(
         L.latLngBounds(
-            L.latLng(boundaries.min),
-            L.latLng(boundaries.max)
+            L.latLng(coord),
+            L.latLng(coord)
         )
     );
 
