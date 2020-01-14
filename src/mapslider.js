@@ -10,8 +10,8 @@ configs.push({ w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, 
 configs.push({ w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" })
 
 var layers = [];
-layers.push({ w:  760, h:  985, x:  364.762, y:  520.398,  z: 5.6459, r: 0.0, name: "2020 Małe", fileName: "2020_small.jpg" });
-layers.push({ w: 2532, h: 3281, x: 1213.617, y: 1736.150,  z: 1.6934, r: 0.0, name: "2020 Szerokie", fileName: "2020_subs.jpg" });
+layers.push({ w:  760, h:  985, x:  364.762, y:  520.398,  z: 5.6459, r: 0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" });
+layers.push({ w: 2532, h: 3281, x: 1213.617, y: 1736.150,  z: 1.6934, r: 0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" });
 layers.push({ w: 2462, h: 2239, x: 1392.896, y: 1021.769,  z: 0.8460, r: 0.0, name: "2020 Centrum", fileName: "2020_center.jpg" });
 
 
@@ -213,6 +213,7 @@ var comboboxChanged = function (e) {
         imgHolder.append($("<img src='src/img/" + configs[mapIndex].fileName + "' map=" + mapIndex + ">"));
     }
 
+    leftMapIndex = $('#left-combobox').val();
     transform();
 }
 
@@ -233,13 +234,15 @@ var simulateKey = function (e) {
     keyPressed(e);
 }
 
-var startDragX, startDragY;
+var startDragX, startDragY, startDragZ;
 
 var startDragging = function (e) {
     e.preventDefault();
     $('.image img').removeClass('with-transition');
-    startDragX = e.pageX;
-    startDragY = e.pageY;
+    var input = getInput(e);
+    startDragX = input.x;
+    startDragY = input.y;
+    startDragZ = input.z;
     $(document)
         .on('mousemove touchmove', dragging)
         .on('mouseup touchend', stopDragging);
@@ -247,10 +250,16 @@ var startDragging = function (e) {
 
 var dragging = function (e) {
     e.preventDefault();
-    translationX += (e.pageX - startDragX) / zoomRatio;
-    translationY += (e.pageY - startDragY) / zoomRatio;
-    startDragX = e.pageX;
-    startDragY = e.pageY;
+    var input = getInput(e);
+    translationX += (input.x - startDragX) / zoomRatio;
+    translationY += (input.y - startDragY) / zoomRatio;
+    if (startDragZ != 0) {
+        zoomRatio *= input.z / startDragZ;
+        chooseLayers();
+    }
+    startDragX = input.x;
+    startDragY = input.y;
+    startDragZ = input.z;
 
     transform();
 }
@@ -262,6 +271,36 @@ var stopDragging = function (e) {
         .off('mouseup touchend', stopDragging);
 };
 
+var getInput = function (e) {
+    if (typeof e.pageX != "undefined") {
+        return {
+            x: e.pageX,
+            y: e.pageY,
+            z: 0
+        }
+    }
+    else {
+        if (e.touches.length == 1) {
+            var t = e.touches[0];
+            return {
+                x: t.pageX,
+                y: t.pageY,
+                z: 0
+            }
+        }
+        else if (e.touches.length == 2) {
+            var t = e.touches;
+            var dx = t[0].pageX - t[1].pageX;
+            var dy = t[0].pageY - t[1].pageY;
+            return {
+                x: (t[0].pageX + t[1].pageX) / 2,
+                y: (t[0].pageY + t[1].pageY) / 2,
+                z: Math.sqrt(dx * dx + dy * dy)
+            }
+        }
+    }
+}
+
 var initMapSlider = function () {
     $('.combobox').change(comboboxChanged);
     fillComboboxes();
@@ -269,13 +308,4 @@ var initMapSlider = function () {
     $('.slider').on('mousewheel', scrollZoom);
     $(document).keydown(keyPressed);
     $('#image-container').on('mousedown touchstart', startDragging);
-
-    $('#zoom-out').bind("touchstart", "-", simulateKey);
-    $('#zoom-in').bind("touchstart", "+", simulateKey);
-    $('#move-up').bind("touchstart", "ArrowUp", simulateKey);
-    $('#move-down').bind("touchstart", "ArrowDown", simulateKey);
-    $('#move-left').bind("touchstart", "ArrowLeft", simulateKey);
-    $('#move-right').bind("touchstart", "ArrowRight", simulateKey);
-
-    transform();
 }
