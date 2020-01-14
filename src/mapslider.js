@@ -308,4 +308,21 @@ var initMapSlider = function () {
     $('.slider').on('mousewheel', scrollZoom);
     $(document).keydown(keyPressed);
     $('#image-container').on('mousedown touchstart', startDragging);
+
+    $(".screen-divider").css("left", "0%");
+    $(".left.image").css("width", "0%");
+    $(window).on("load", slideSlider)
+}
+
+var slideSlider = function() {
+    setTimeout(() => {
+        $(".screen-divider").css("transition-duration", "1.2s");
+        $(".left.image").css("transition-duration", "1.2s");
+        $(".screen-divider").css("left", "50%");
+        $(".left.image").css("width", "50%");
+        setTimeout(() => {
+            $(".screen-divider").css("transition-duration", "");
+            $(".left.image").css("transition-duration", "");
+        }, 1200);
+    }, 1000);
 }
