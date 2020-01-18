@@ -4,10 +4,13 @@ configs.push({ w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, 
 configs.push({ w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" });
 configs.push({ name: "2020"});
 configs.push({ w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, name: "1954-73 Powstańców W-wy", fileName: "1954-73 powstańców.jpg" });
-configs.push({ w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg" })
-configs.push({ w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" })
-configs.push({ w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" })
-configs.push({ w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" })
+configs.push({ w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg" });
+configs.push({ w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" });
+configs.push({ w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" });
+configs.push({ w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" });
+configs.push({ w: 4671, h: 4712, x: 2649.241, y: 1888.498, z: 0.4815, r:   0.0, name: "Foto 2011 Śródmieście", fileName: "OAMap center.jpg" });
+configs.push({ w: 5618, h: 5036, x: 1503.241, y: 5431.453, z: 0.4815, r:   0.0, name: "Foto 2011 Załęże", fileName: "OAMap załęże.jpg" });
+configs.push({ w: 4198, h: 4437, x: 3576.241, y: -937.498, z: 0.4815, r:   0.0, name: "Foto 2011 Dąbrowskiego", fileName: "OAMap dąbrowskiego.jpg" });
 
 var layers = [];
 layers.push({ w:  760, h:  985, x:  364.762, y:  520.398,  z: 5.6459, r: 0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" });
@@ -176,7 +179,7 @@ var limitTransformations = function () {
     if (translationY < minY)
         translationY = minY;
 
-    if (zoomRatio > maxZ)
+    if (zoomRatio > maxZ && !debug)
         zoomRatio = maxZ;
     if (zoomRatio < minZ)
         zoomRatio = minZ;

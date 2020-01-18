@@ -1,4 +1,5 @@
 <head>
+    <meta charset="UTF-8">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="src/imgslider.js"></script>
     <script type="text/javascript" src="src/mapslider.js"></script>
@@ -18,9 +19,7 @@
         <select id="right-combobox" class="combobox"></select>
     </div>
     <script type="text/javascript">
-        $('.slider').slider({
-            instructionText: "Użyj myszki do przesunięcia niebieskiej lini, oraz do przesuwania i przybliżania mapy"
-        });
+        $('.slider').slider();
         initMapSlider();
     </script>
 </body>
