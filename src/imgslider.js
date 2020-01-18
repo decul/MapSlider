@@ -71,7 +71,10 @@
 			} else {
 				// width = e.offsetX === undefined ? e.pageX - e.originalEvent.layerX : e.offsetX;
 				width = e.clientX;
-			}
+            }
+            if (width < 1) {
+                width = 1;
+            }
 			if (width <= $slider.width()) {
 				$slider.find('.left.image').css('width', width);
 				$screenDivider.css('left', width);
