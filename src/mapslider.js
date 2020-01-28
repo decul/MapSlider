@@ -8,14 +8,14 @@ configs.push({ w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, 
 configs.push({ w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" });
 configs.push({ w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" });
 configs.push({ w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" });
-configs.push({ w: 4671, h: 4712, x: 2649.241, y: 1888.498, z: 0.4815, r:   0.0, name: "Foto 2011 Śródmieście", fileName: "OAMap center.jpg" });
-configs.push({ w: 5618, h: 5036, x: 1503.241, y: 5431.453, z: 0.4815, r:   0.0, name: "Foto 2011 Załęże", fileName: "OAMap załęże.jpg" });
-configs.push({ w: 4198, h: 4437, x: 3576.241, y: -937.498, z: 0.4815, r:   0.0, name: "Foto 2011 Dąbrowskiego", fileName: "OAMap dąbrowskiego.jpg" });
+configs.push({ name: "Foto 2020"});
 
 var layers = [];
-layers.push({ w:  760, h:  985, x:  364.762, y:  520.398,  z: 5.6459, r: 0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" });
-layers.push({ w: 2532, h: 3281, x: 1213.617, y: 1736.150,  z: 1.6934, r: 0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" });
-layers.push({ w: 2462, h: 2239, x: 1392.896, y: 1021.769,  z: 0.8460, r: 0.0, name: "2020 Centrum", fileName: "2020_center.jpg" });
+layers.push({ w:  760, h:   985, x:  364.202, y:  521.066, z: 5.6121, r:  0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" });
+layers.push({ w: 2532, h:  3281, x: 1212.104, y: 1738.038, z: 1.6833, r:  0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" });
+layers.push({ w: 2462, h:  2239, x: 1390.483, y: 1024.922, z: 0.8409, r:  0.0, name: "2020 Centrum", fileName: "2020_center.jpg" });
+layers.push({ w: 4451, h: 11292, x: 2170.526, y: 6038.578, z: 0.4787, r: 31.3, name: "Foto 2020 skos", googleId: "1FB4rl-9_AvoK-ul_pZS59iYDnqJsd04B" });
+layers.push({ w: 3213, h:  3214, x: 1806.086, y: 1585.977, z: 0.4787, r:  0.0, name: "Foto 2020 centrum", googleId: "1x57W4M-938ElmUKcU0X08uSWGL8U4fdn" });
 
 
 
@@ -169,20 +169,22 @@ var transform = function () {
 }
 
 var limitTransformations = function () {
-    if (translationX > maxX)
-        translationX = maxX;
-    if (translationX < minX)
-        translationX = minX;
+    if (!debug) {
+        if (translationX > maxX)
+            translationX = maxX;
+        if (translationX < minX)
+            translationX = minX;
 
-    if (translationY > maxY)
-        translationY = maxY;
-    if (translationY < minY)
-        translationY = minY;
+        if (translationY > maxY)
+            translationY = maxY;
+        if (translationY < minY)
+            translationY = minY;
 
-    if (zoomRatio > maxZ && !debug)
-        zoomRatio = maxZ;
-    if (zoomRatio < minZ)
-        zoomRatio = minZ;
+        if (zoomRatio > maxZ)
+            zoomRatio = maxZ;
+        if (zoomRatio < minZ)
+            zoomRatio = minZ;
+    }
 }
 
 var fillComboboxes = function () {
@@ -208,22 +210,35 @@ var comboboxChanged = function (e) {
     imgHolder.empty();
 
     if (configs[mapIndex].name == "2020") {
-        imgHolder.append($("<img src='src/img/" + layers[0].fileName + "' layer=0>"));
-        imgHolder.append($("<img src='src/img/" + layers[1].fileName + "' layer=1>"));
-        imgHolder.append($("<img src='src/img/" + layers[2].fileName + "' layer=2>"));
+        imgHolder.append($("<img src=" + imgURL(layers[0]) + " layer=0>"));
+        imgHolder.append($("<img src=" + imgURL(layers[1]) + " layer=1>"));
+        imgHolder.append($("<img src=" + imgURL(layers[2]) + " layer=2>"));
+    }
+    else if (configs[mapIndex].name == "Foto 2020") {
+        imgHolder.append($("<img src=" + imgURL(layers[3]) + " layer=3>"));
+        imgHolder.append($("<img src=" + imgURL(layers[4]) + " layer=4>"));
     }
     else {
-        imgHolder.append($("<img src='src/img/" + configs[mapIndex].fileName + "' map=" + mapIndex + ">"));
+        imgHolder.append($("<img src=" + imgURL(configs[mapIndex]) + " map=" + mapIndex + ">"));
     }
 
     leftMapIndex = $('#left-combobox').val();
     transform();
 }
 
+var imgURL = function (conf) {
+    if (conf.hasOwnProperty("googleId")) {
+        return "https://drive.google.com/uc?export=download&id=" + conf.googleId;
+    }
+    else {
+        return "'src/img/" + conf.fileName + "'";
+    }
+}
+
 var chooseLayers = function () {
     $("img[layer]").each(function() {
         var index = parseInt($(this).attr("layer"));
-        if (index != 0) {
+        if (index > 0 && index < 3) {
             if (layers[index - 1].z * zoomRatio >= 1.5)
                 $(this).css('opacity', '1.0');
             else 
