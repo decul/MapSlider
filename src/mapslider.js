@@ -1,22 +1,22 @@
-var configs = [];
-configs.push({ w: 2462, h: 1758, x: 1467.000, y:  926.000, z: 0.9238, r:   0.0, name: "1888", fileName: "1888.jpg" });
-configs.push({ w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, name: "1944", fileName: "1944.jpg" });
-configs.push({ w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" });
-configs.push({ name: "2020"});
-configs.push({ w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, name: "1954-73 Powstańców W-wy", fileName: "1954-73 powstańców.jpg" });
-configs.push({ w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg" });
-configs.push({ w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" });
-configs.push({ w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" });
-configs.push({ w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" });
-configs.push({ name: "Foto 2020"});
-
-var layers = [];
-layers.push({ w:  760, h:   985, x:  364.202, y:  521.066, z: 5.6121, r:  0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" });
-layers.push({ w: 2532, h:  3281, x: 1212.104, y: 1738.038, z: 1.6833, r:  0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" });
-layers.push({ w: 2462, h:  2239, x: 1390.483, y: 1024.922, z: 0.8409, r:  0.0, name: "2020 Centrum", fileName: "2020_center.jpg" });
-layers.push({ w: 4451, h: 11292, x: 2170.526, y: 6038.578, z: 0.4787, r: 31.3, name: "Foto 2020 skos", googleId: "1FB4rl-9_AvoK-ul_pZS59iYDnqJsd04B" });
-layers.push({ w: 3213, h:  3214, x: 1806.086, y: 1585.977, z: 0.4787, r:  0.0, name: "Foto 2020 centrum", googleId: "1x57W4M-938ElmUKcU0X08uSWGL8U4fdn" });
-
+var configs = [
+    { w: 2462, h: 1758, x: 1467.000, y:  926.000, z: 0.9238, r:   0.0, name: "1888", fileName: "1888.jpg" },
+    { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, name: "1944", fileName: "1944.jpg" },
+    { w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" },
+    { name: "2020", dynamic: true, layers: [
+        { w:  760, h:   985, x:  364.202, y:  521.066, z: 5.6121, r:  0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" },
+        { w: 2532, h:  3281, x: 1212.104, y: 1738.038, z: 1.6833, r:  0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" },
+        { w: 2462, h:  2239, x: 1390.483, y: 1024.922, z: 0.8409, r:  0.0, name: "2020 Centrum", fileName: "2020_center.jpg" }
+    ]},
+    { w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, name: "1954-73 Powstańców W-wy", fileName: "1954-73 powstańców.jpg" },
+    { w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg" },
+    { w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" },
+    { w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" },
+    { w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" },
+    { name: "Foto 2020", dynamic: false, layers: [
+        { w: 4451, h: 11292, x: 2170.526, y: 6038.578, z: 0.4787, r: 31.3, name: "Foto 2020 skos", googleId: "1FB4rl-9_AvoK-ul_pZS59iYDnqJsd04B" },
+        { w: 3213, h:  3214, x: 1806.086, y: 1585.977, z: 0.4787, r:  0.0, name: "Foto 2020 centrum", googleId: "1x57W4M-938ElmUKcU0X08uSWGL8U4fdn" }
+    ]}
+];
 
 
 const minX = -2233.0;
@@ -148,11 +148,9 @@ var transform = function () {
     var screenHeight = $(window).height();
 
     $(".image img").each(function() {
-        var conf;
-        if ($(this).is("[map]")) 
-            conf = configs[$(this).attr("map")];
-        else 
-            conf = layers[$(this).attr("layer")];
+        var conf = configs[$(this).attr("map")];
+        if ($(this).is("[layer]")) 
+            conf = conf.layers[$(this).attr("layer")];
 
         var zoom = zoomRatio * conf.z;
 
@@ -209,17 +207,15 @@ var comboboxChanged = function (e) {
 
     imgHolder.empty();
 
-    if (configs[mapIndex].name == "2020") {
-        imgHolder.append($("<img src=" + imgURL(layers[0]) + " layer=0>"));
-        imgHolder.append($("<img src=" + imgURL(layers[1]) + " layer=1>"));
-        imgHolder.append($("<img src=" + imgURL(layers[2]) + " layer=2>"));
-    }
-    else if (configs[mapIndex].name == "Foto 2020") {
-        imgHolder.append($("<img src=" + imgURL(layers[3]) + " layer=3>"));
-        imgHolder.append($("<img src=" + imgURL(layers[4]) + " layer=4>"));
+    var config = configs[mapIndex];
+
+    if (config.hasOwnProperty("layers")) {
+        $(config.layers).each(function(layerIndex) {
+            imgHolder.append($("<img src=" + imgURL(this) + " map=" + mapIndex + " layer=" + layerIndex + ">"));
+        })
     }
     else {
-        imgHolder.append($("<img src=" + imgURL(configs[mapIndex]) + " map=" + mapIndex + ">"));
+        imgHolder.append($("<img src=" + imgURL(config) + " map=" + mapIndex + ">"));
     }
 
     leftMapIndex = $('#left-combobox').val();
@@ -237,12 +233,15 @@ var imgURL = function (conf) {
 
 var chooseLayers = function () {
     $("img[layer]").each(function() {
-        var index = parseInt($(this).attr("layer"));
-        if (index > 0 && index < 3) {
-            if (layers[index - 1].z * zoomRatio >= 1.5)
-                $(this).css('opacity', '1.0');
-            else 
-                $(this).css('opacity', '0.0');
+        var map = configs[$(this).attr("map")];
+        if (map.dynamic) {
+            var layerIndex = parseInt($(this).attr("layer"));
+            if (layerIndex > 0) {
+                if (map.layers[layerIndex - 1].z * zoomRatio >= 1.5)
+                    $(this).css('opacity', '1.0');
+                else 
+                    $(this).css('opacity', '0.0');
+            }
         }
     });
 }
