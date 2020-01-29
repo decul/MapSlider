@@ -45,10 +45,10 @@ var scrollZoom = function (e) {
     e.preventDefault();
     $('.image img').addClass('with-transition');
     if (e.originalEvent.wheelDelta / 120 > 0) {
-        zoomRatio *= zoomDelta;
+        changeZoom(e.pageX, e.pageY, zoomDelta);
     }
     else {
-        zoomRatio /= zoomDelta;
+        changeZoom(e.pageX, e.pageY, 1.0 / zoomDelta);
     }
     transform();
     chooseLayers();
@@ -166,6 +166,16 @@ var transform = function () {
     });
 }
 
+var changeZoom = function (mouseX, mouseY, zoomChange) {
+    var prevZoom = zoomRatio;
+    zoomRatio *= zoomChange;
+    limitTransformations();
+    var x = mouseX - $(window).width() / 2.0;
+    var y = mouseY - $(window).height() / 2.0;
+    translationX += x / zoomRatio - x / prevZoom;
+    translationY += y / zoomRatio - y / prevZoom;
+}
+
 var limitTransformations = function () {
     if (!debug) {
         if (translationX > maxX)
@@ -268,12 +278,13 @@ var startDragging = function (e) {
 var dragging = function (e) {
     e.preventDefault();
     var input = getInput(e);
-    translationX += (input.x - startDragX) / zoomRatio;
-    translationY += (input.y - startDragY) / zoomRatio;
     if (startDragZ != 0) {
-        zoomRatio *= input.z / startDragZ;
+        changeZoom(input.x, input.y, input.z / startDragZ);
         chooseLayers();
     }
+    translationX += (input.x - startDragX) / zoomRatio;
+    translationY += (input.y - startDragY) / zoomRatio;
+    
     startDragX = input.x;
     startDragY = input.y;
     startDragZ = input.z;

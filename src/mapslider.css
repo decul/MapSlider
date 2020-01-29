@@ -6,7 +6,7 @@ body {
     background: #00000080;
 }
 
-#image-container {
+.slider {
     touch-action: none;
 }
 
