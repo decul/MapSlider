@@ -1,6 +1,7 @@
 var configs = [
     { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, name: "1849", googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa" },
     { w: 5434, h: 4567, x: 2439.665, y: 2133.054, z: 0.3059, r:  -1.3, name: "1888", googleId: "1McZJJbSTqdfVRvwTaRuqj75M5gjCP70X" },
+    { w: 1399, h: 2048, x:  726.125, y: 1065.833, z: 1.1933, r:  12.9, name: "20-to lecie m. woj.", googleId: "1P9pN30mfVarRGT8ivNprTDiFK4e74eYf" },
     { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, name: "1944", fileName: "1944.jpg" },
     { w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" },
     { name: "2020", dynamic: true, layers: [
