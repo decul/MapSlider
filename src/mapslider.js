@@ -1,5 +1,6 @@
 var configs = [
-    { w: 2462, h: 1758, x: 1467.000, y:  926.000, z: 0.9238, r:   0.0, name: "1888", fileName: "1888.jpg" },
+    { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, name: "1849", googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa" },
+    { w: 5434, h: 4567, x: 2439.665, y: 2133.054, z: 0.3059, r:  -1.3, name: "1888", googleId: "1McZJJbSTqdfVRvwTaRuqj75M5gjCP70X" },
     { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, name: "1944", fileName: "1944.jpg" },
     { w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" },
     { name: "2020", dynamic: true, layers: [
@@ -27,8 +28,8 @@ const minZ = 0.0625;
 const maxZ = 4.0;
 
 
-var leftMapIndex = 1;
-var rightMapIndex = 3;
+var leftMapIndex = 2;
+var rightMapIndex = 4;
 
 
 const zoomDelta = 1.42;
