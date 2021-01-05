@@ -1,15 +1,16 @@
 var configs = [
+    { w: 2093, h: 2414, x:  993.632, y: 1132.990, z: 1.9738, r:   0.0, name: "1779-83", googleId: "1ctm1G9jqUsdGO6gGtBU91a7jS1ZHhpua" },
     { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, name: "1849", googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa" },
     { w: 5434, h: 4567, x: 2439.665, y: 2133.054, z: 0.3059, r:  -1.3, name: "1888", googleId: "1McZJJbSTqdfVRvwTaRuqj75M5gjCP70X" },
     { w: 1399, h: 2048, x:  726.125, y: 1065.833, z: 1.1933, r:  12.9, name: "20-to lecie m. woj.", googleId: "1P9pN30mfVarRGT8ivNprTDiFK4e74eYf" },
     { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, name: "1944", fileName: "1944.jpg" },
     { w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" },
+    { w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, name: "1954-73 Powstańców W-wy", fileName: "1954-73 powstańców.jpg" },
     { name: "2020", dynamic: true, layers: [
         { w:  760, h:   985, x:  364.202, y:  521.066, z: 5.6121, r:  0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" },
         { w: 2532, h:  3281, x: 1212.104, y: 1738.038, z: 1.6833, r:  0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" },
         { w: 2462, h:  2239, x: 1390.483, y: 1024.922, z: 0.8409, r:  0.0, name: "2020 Centrum", fileName: "2020_center.jpg" }
     ]},
-    { w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, name: "1954-73 Powstańców W-wy", fileName: "1954-73 powstańców.jpg" },
     { w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg" },
     { w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" },
     { w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" },
@@ -29,8 +30,8 @@ const minZ = 0.0625;
 const maxZ = 4.0;
 
 
-var leftMapIndex = 2;
-var rightMapIndex = 4;
+var leftMapIndex = 4;
+var rightMapIndex = 7;
 
 
 const zoomDelta = 1.42;
@@ -60,7 +61,7 @@ var keyPressed = function (e) {
     if (e.key.match("^F"))
         return;
 
-    e.preventDefault();
+    var keyFound = true;
 
     switch (e.key) {
         case 'ArrowUp':
@@ -94,9 +95,15 @@ var keyPressed = function (e) {
             zoomRatio /= zoomDelta;
             chooseLayers();
             break;
+
+        default:
+            keyFound = false;
+            break;
     }
 
-    if (debug) {
+    if (debug && !keyFound) {
+        keyFound = true;
+
         switch (e.key) {
             case 'q':
                 configs[leftMapIndex].r -= 0.1;
@@ -137,8 +144,15 @@ var keyPressed = function (e) {
                 configs[leftMapIndex].z *= 1.003;
                 console.log(configs[leftMapIndex]);
                 break;
+
+            default:
+                keyFound = false;
+                break;
         }
     }
+
+    if (keyFound) 
+        e.preventDefault();
 
     transform();
 }
