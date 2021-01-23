@@ -1,23 +1,23 @@
 var configs = [
-    { w: 2093, h: 2414, x:  993.632, y: 1132.990, z: 1.9738, r:   0.0, name: "1779-83", googleId: "1ctm1G9jqUsdGO6gGtBU91a7jS1ZHhpua" },
-    { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, name: "1849", googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa" },
-    { w: 5434, h: 4567, x: 2439.665, y: 2133.054, z: 0.3059, r:  -1.3, name: "1888", googleId: "1McZJJbSTqdfVRvwTaRuqj75M5gjCP70X" },
-    { w: 1399, h: 2048, x:  726.125, y: 1065.833, z: 1.1933, r:  12.9, name: "20-to lecie m. woj.", googleId: "1P9pN30mfVarRGT8ivNprTDiFK4e74eYf" },
-    { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, name: "1944", fileName: "1944.jpg" },
-    { w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, name: "1957", fileName: "1957.jpg" },
-    { w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, name: "1954-73 Powstańców W-wy", fileName: "1954-73 powstańców.jpg" },
+    { w: 2093, h: 2414, x:  993.632, y: 1132.990, z: 1.9738, r:   0.0, googleId: "1ctm1G9jqUsdGO6gGtBU91a7jS1ZHhpua", name: "1779-83" },
+    { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa", name: "1849" },
+    { w: 5434, h: 4567, x: 2439.665, y: 2133.054, z: 0.3059, r:  -1.3, googleId: "1McZJJbSTqdfVRvwTaRuqj75M5gjCP70X", name: "1888" },
+    { w: 1399, h: 2048, x:  726.125, y: 1065.833, z: 1.1933, r:  12.9, googleId: "1QNgb3psLdjDl0ALUiPkRSdDI_J_5_irW", name: "20-to lecie m. woj." },
+    { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, googleId: "1yokWE3Ygu2dTz_BKHO6AVmT5aAINXRNV", name: "1944" },
+    { w: 1643, h: 1853, x: 799.0740, y: 931.1710, z: 1.7260, r:  -1.0, googleId: "14NF8u2FghebzAem2XKul5QCzLztY5AqS", name: "1957" },
+    { w:  377, h:  317, x: 597.0400, y: -641.550, z: 1.4330, r:   2.9, googleId: "19kSxYfWx5S5bBAxGcSuUe4kU9AH-nsBE", name: "1954-73 Powstańców W-wy" },
     { name: "2020", dynamic: true, layers: [
-        { w:  760, h:   985, x:  364.202, y:  521.066, z: 5.6121, r:  0.0, name: "2020 Low resolution", fileName: "2020_small.jpg" },
-        { w: 2532, h:  3281, x: 1212.104, y: 1738.038, z: 1.6833, r:  0.0, name: "2020 Przedmieścia", fileName: "2020_subs.jpg" },
-        { w: 2462, h:  2239, x: 1390.483, y: 1024.922, z: 0.8409, r:  0.0, name: "2020 Centrum", fileName: "2020_center.jpg" }
+        { w:  760, h:   985, x:  364.202, y:  521.066, z: 5.6121, r:  0.0, googleId: "1zUDVchxAlawmJIxfa-TCKHpesATfNjFl", name: "2020 Low resolution" },
+        { w: 2532, h:  3281, x: 1212.104, y: 1738.038, z: 1.6833, r:  0.0, googleId: "1HmYTKsl7YNAKRlVBaJwa23s-ftKmHi6w", name: "2020 Przedmieścia" },
+        { w: 2462, h:  2239, x: 1390.483, y: 1024.922, z: 0.8409, r:  0.0, googleId: "1-UK2yON05yLRaq1q_Mus3ZHbFz0UNnSc", name: "2020 Centrum" }
     ]},
-    { w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, name: "Foto 1944 Śródmieście", fileName: "1944_7.jpg" },
-    { w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, name: "Foto 1944 1000-lecia", fileName: "1944_6.jpg" },
-    { w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, name: "Foto 1944 Załęże", fileName: "1944_4.jpg" },
-    { w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, name: "Foto 1944 Dąbrowskiego", fileName: "1944_1.jpg" },
+    { w: 3468, h: 3464, x: 2005.420, y: 1433.850, z: 0.5226, r: -59.2, googleId: "1gLqZhw2YYeiS9_hSGIP7XnDr53_qs0os", name: "Foto 1944 Śródmieście" },
+    { w: 3461, h: 3462, x: 1468.560, y: 2844.450, z: 0.5305, r: -59.2, googleId: "1g7_O1MpZLJm4L2ivhwf5biq5AXgxfQQ6", name: "Foto 1944 1000-lecia" },
+    { w: 3472, h: 3470, x: -219.240, y: 4885.160, z: 0.5305, r: -60.0, googleId: "1Q1Q83vJ0XcLAuxV5iiijaxf41D4M3dpw", name: "Foto 1944 Załęże" },
+    { w: 5857, h: 4783, x: 5579.760, y: -1926.25, z: 0.3140, r:  44.1, googleId: "1HyMsqNqaQxHJaJuhRLpFvR8MGqV-qdr9", name: "Foto 1944 Dąbrowskiego" },
     { name: "Foto 2020", dynamic: false, layers: [
-        { w: 4451, h: 11292, x: 2170.526, y: 6038.578, z: 0.4787, r: 31.3, name: "Foto 2020 skos", googleId: "1FB4rl-9_AvoK-ul_pZS59iYDnqJsd04B" },
-        { w: 3213, h:  3214, x: 1806.086, y: 1585.977, z: 0.4787, r:  0.0, name: "Foto 2020 centrum", googleId: "1x57W4M-938ElmUKcU0X08uSWGL8U4fdn" }
+        { w: 4451, h: 11292, x: 2170.526, y: 6038.578, z: 0.4787, r: 31.3, googleId: "1FB4rl-9_AvoK-ul_pZS59iYDnqJsd04B", name: "Foto 2020 skos" },
+        { w: 3213, h:  3214, x: 1806.086, y: 1585.977, z: 0.4787, r:  0.0, googleId: "1x57W4M-938ElmUKcU0X08uSWGL8U4fdn", name: "Foto 2020 centrum" }
     ]}
 ];
 
@@ -249,12 +249,7 @@ var comboboxChanged = function (e) {
 }
 
 var imgURL = function (conf) {
-    if (conf.hasOwnProperty("googleId")) {
-        return "https://drive.google.com/uc?export=download&id=" + conf.googleId;
-    }
-    else {
-        return "'src/img/" + conf.fileName + "'";
-    }
+    return "https://drive.google.com/uc?export=download&id=" + conf.googleId;
 }
 
 var chooseLayers = function () {
