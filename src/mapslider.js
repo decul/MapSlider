@@ -1,6 +1,9 @@
 var configs = [
     { w: 2093, h: 2414, x:  993.632, y: 1132.990, z: 1.9738, r:   0.0, googleId: "1ctm1G9jqUsdGO6gGtBU91a7jS1ZHhpua", name: "1779-83" },
-    { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa", name: "1849" },
+    { name: "1849", dynamic: false, layers: [
+        { w: 1810, h: 1461, x: 2684.107, y: 1651.743, z: 0.6154, r:  -1.4, googleId: "1gj9L_qmvAFWtOdLFXP0zsySBTla0ukLK", name: "1849 - Ruskawieś" },
+        { w: 5416, h: 5264, x: 2349.795, y: 2794.121, z: 0.3077, r:  -1.4, googleId: "1to2eWVQ7wYScRVwOiZxu4RX7O2DJ7Ywa", name: "1849 - Rzeszów" }
+    ]},
     { w: 5434, h: 4567, x: 2439.665, y: 2133.054, z: 0.3059, r:  -1.3, googleId: "1McZJJbSTqdfVRvwTaRuqj75M5gjCP70X", name: "1888" },
     { w: 1399, h: 2048, x:  726.125, y: 1065.833, z: 1.1933, r:  12.9, googleId: "1QNgb3psLdjDl0ALUiPkRSdDI_J_5_irW", name: "20-to lecie m. woj." },
     { w: 4662, h: 4345, x: 2658.580, y: 2040.920, z: 0.4000, r:   0.0, googleId: "1yokWE3Ygu2dTz_BKHO6AVmT5aAINXRNV", name: "1944" },
